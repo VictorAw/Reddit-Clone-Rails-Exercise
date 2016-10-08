@@ -15,6 +15,7 @@
   <%= auth_token %>
 
   <!-- comment[post_id] is not being passed into params for some reason -->
+  <!-- It seems like the issue was browser cache. After clearing cache and cookies, the comments were appearing properly on the page -->
   <input type="hidden" name="comment[post_id]" value="<%= @post.id %>">
   <label>Comment:</label><br>
   <textarea name="comment[content]" rows=5></textarea>

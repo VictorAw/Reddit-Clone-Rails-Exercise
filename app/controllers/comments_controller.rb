@@ -6,7 +6,6 @@ class CommentsController < ApplicationController
   def create
     comment = Comment.new(comment_params)
     comment.author_id = current_user.id
-    fail
     comment.save
 
     redirect_to :back

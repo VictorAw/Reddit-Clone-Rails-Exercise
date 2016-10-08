@@ -1,0 +1,23 @@
+<h1><%= link_to @post.title, @post.url %></h1>
+
+<br>
+
+<p><%= @post.content %></p>
+
+<hr>
+<br>
+<% @post.comments.where(parent_id: nil).each do |comment| %>
+  <p><%= link_to "Comment Details", comment_url(comment) %></p>
+  <br>
+<% end %>
+<hr>
+<form action="<%= comments_url %>" method="post">
+  <%= auth_token %>
+
+  <input type="hidden" name="comment[post_id]" value="<%= @post.id %>">
+  <label>Comment:</label><br>
+  <textarea name="comment[content]" rows=5></textarea>
+
+  <br>
+  <input type="submit" value="Post Comment!">
+</form>

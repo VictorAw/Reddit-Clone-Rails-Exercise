@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RedditOnRails</title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+
+  <style type="text/css">
+    .tab { margin-left: 40px; }
+  </style>
+</head>
+<body>
+  <% if current_user.nil? %>
+    <%= link_to "Login", new_session_url %>
+    <%= link_to "Sign Up", new_user_url %>
+  <% else %>
+    <%= link_to "Logout", session_url, method: :delete %>
+  <% end %>
+  <br>
+  <br>
+
+<%= yield %>
+
+</body>
+</html>

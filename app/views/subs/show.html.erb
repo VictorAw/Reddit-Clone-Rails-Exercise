@@ -1,0 +1,15 @@
+<label><%= @sub.title.capitalize %></label>
+<br>
+<p><%= @sub.description %></p>
+<br>
+<% @sub.posts.each do |post| %>
+  <%= link_to post.title, post_url(post) %>
+  <br>
+<% end %>
+<br>
+<br>
+<% @sub.cross_posts.each do |post| %>
+  <% next if post.sub_id == @sub.id %>
+  <%= link_to post.title, post_url(post) %>
+  <br>
+<% end %>
